@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>USA Limos Service — The Obsidian Standard</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-primary-container": "#554300",
+          "on-secondary": "#412d00",
+          "secondary": "#e9c176",
+          "on-error-container": "#ffdad6",
+          "surface-bright": "#393939",
+          "on-primary-fixed-variant": "#574500",
+          "on-primary": "#3c2f00",
+          "surface-container": "#1f1f1f",
+          "on-tertiary-container": "#444545",
+          "secondary-fixed-dim": "#e9c176",
+          "on-secondary-fixed-variant": "#5d4201",
+          "inverse-surface": "#e2e2e2",
+          "on-tertiary": "#2f3131",
+          "on-primary-fixed": "#241a00",
+          "error-container": "#93000a",
+          "primary-container": "#d4af37",
+          "background": "#131313",
+          "on-tertiary-fixed-variant": "#464747",
+          "on-secondary-fixed": "#261900",
+          "surface-container-low": "#1b1b1b",
+          "on-secondary-container": "#dab36a",
+          "error": "#ffb4ab",
+          "surface-container-high": "#2a2a2a",
+          "surface-variant": "#353535",
+          "primary-fixed-dim": "#e9c349",
+          "outline": "#99907c",
+          "tertiary": "#cfcece",
+          "on-tertiary-fixed": "#1a1c1c",
+          "primary": "#f2ca50",
+          "on-surface-variant": "#d0c5af",
+          "surface": "#131313",
+          "secondary-fixed": "#ffdea5",
+          "on-error": "#690005",
+          "on-surface": "#e2e2e2",
+          "outline-variant": "#4d4635",
+          "inverse-primary": "#735c00",
+          "surface-dim": "#131313",
+          "tertiary-fixed-dim": "#c7c6c6",
+          "tertiary-fixed": "#e3e2e2",
+          "surface-tint": "#e9c349",
+          "on-background": "#e2e2e2",
+          "surface-container-highest": "#353535",
+          "tertiary-container": "#b3b3b3",
+          "inverse-on-surface": "#303030",
+          "surface-container-lowest": "#0e0e0e",
+          "primary-fixed": "#ffe088",
+          "secondary-container": "#604403"
+        },
+        fontFamily: {
+          "headline": ["Noto Serif"],
+          "body": ["Manrope"],
+          "label": ["Manrope"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+  }
+  .gold-gradient { background: linear-gradient(45deg, #f2ca50, #d4af37); }
+  .text-glow { text-shadow: 0 0 15px rgba(242, 202, 80, 0.3); }
+  .obsidian-card-shadow { box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+
+  /* Page transition */
+  .page { display: none; animation: fadeIn 0.35s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Booking steps */
+  .booking-step { display: none; }
+  .booking-step.active { display: block; }
+
+  /* Mobile menu */
+  #mobile-menu { display: none; }
+  #mobile-menu.open { display: flex; }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Form inputs */
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], select, textarea {
+    background: transparent;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #f2ca50 !important;
+  }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- ═══════════════════════ GLOBAL HEADER ═══════════════════════ -->
+<header class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-yellow-900/10">
+  <nav class="flex justify-between items-center w-full px-6 md:px-10 py-5 max-w-full">
+    <!-- Logo -->
+    <button onclick="showPage('home')" class="font-serif italic text-xl font-bold text-yellow-500 tracking-tighter hover:text-yellow-400 transition-colors">
+      USA Limos Service
+    </button>
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center space-x-10">
+      <button onclick="showPage('home')" data-page="home" class="nav-link text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors">Home</button>
+      <button onclick="showPage('fleet')" data-page="fleet" class="nav-link text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors">Fleet</button>
+      <button onclick="showPage('services')" data-page="services" class="nav-link text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors">Services</button>
+      <button onclick="showPage('about')" data-page="about" class="nav-link text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors">About</button>
+    </div>
+    <!-- Right Actions -->
+    <div class="flex items-center gap-4">
+      <a href="tel:+18005550199" class="text-yellow-500 hover:bg-neutral-800/40 p-2 rounded-full transition-colors">
+        <span class="material-symbols-outlined" style="font-size:20px;">call</span>
+      </a>
+      <button onclick="showPage('book')" class="gold-gradient text-on-primary text-[11px] font-semibold tracking-[0.2em] uppercase px-6 py-2.5 rounded-sm active:scale-95 transition-all hover:opacity-90">
+        Book Now
+      </button>
+      <!-- Mobile hamburger -->
+      <button id="hamburger" onclick="toggleMobile()" class="md:hidden text-neutral-300 hover:text-yellow-400 transition-colors ml-1">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="flex-col bg-neutral-950/95 border-t border-yellow-900/10 px-6 py-6 space-y-5 md:hidden">
+    <button onclick="showPage('home'); toggleMobile()" class="block text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors text-left">Home</button>
+    <button onclick="showPage('fleet'); toggleMobile()" class="block text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors text-left">Fleet</button>
+    <button onclick="showPage('services'); toggleMobile()" class="block text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors text-left">Services</button>
+    <button onclick="showPage('about'); toggleMobile()" class="block text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-300 hover:text-yellow-200 transition-colors text-left">About</button>
+    <button onclick="showPage('book'); toggleMobile()" class="gold-gradient text-on-primary text-[11px] font-semibold tracking-[0.2em] uppercase px-6 py-2.5 rounded-sm w-full text-center">Book Now</button>
+  </div>
+</header>
+
+<!-- ═══════════════════════ PAGE: HOME ═══════════════════════ -->
+<div id="page-home" class="page active">
+  <main>
+    <!-- Hero -->
+    <section class="relative h-screen flex items-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10"></div>
+        <img alt="Luxury Limousine" class="w-full h-full object-cover grayscale opacity-60"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXfKKr0YbPBrWs6jEDgNqQfn91iApXPNU4kFGFr8jdVP_7jbnUpSN0U_C6Q1o_Fytf5EKi4ElR5FNZ53mv2e5v9iErYFK2nZRub-Kttt5PQcdQ9wK1Zt4OPs2OilZnK9MQXs_egFGts7Majj0NrvhTgE9qmakVzcAf7mGOIwrNrNguThWZHZA3vmcT6XlAaA6uddFb4ebmTrnu6QTXM1X6JayMNu542CGT-2pPEgUVqkNw9D0sh_TdtmgxR6Bxay6ecwWVmew0Mfg"/>
+      </div>
+      <div class="relative z-20 px-8 md:px-20 max-w-5xl">
+        <p class="text-primary text-[12px] font-bold tracking-[0.4em] uppercase mb-6 flex items-center gap-4">
+          <span class="w-10 h-[1px] bg-primary"></span> obsidian standard
+        </p>
+        <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-on-surface mb-8 leading-none italic">
+          The Obsidian Standard<br/>
+          <span class="font-normal not-italic text-primary-container">of Travel.</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg font-light max-w-xl mb-10 leading-relaxed">
+          Elite chauffeured service crafted for the discerning traveler. Experience the silence of absolute luxury.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="showPage('book')" class="gold-gradient text-on-primary px-10 py-4 text-[11px] font-bold tracking-[0.3em] uppercase rounded-sm hover:opacity-90 active:scale-95 transition-all">
+            Reserve Your Chauffeur
+          </button>
+          <button onclick="showPage('fleet')" class="border border-primary/40 text-primary px-10 py-4 text-[11px] font-bold tracking-[0.3em] uppercase rounded-sm hover:bg-primary/5 transition-colors">
+            View The Fleet
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-surface-container py-10 px-6 md:px-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+        <div>
+          <span class="font-headline text-3xl text-primary block">25+</span>
+          <span class="text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">Years of Excellence</span>
+        </div>
+        <div>
+          <span class="font-headline text-3xl text-primary block">500+</span>
+          <span class="text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">Satisfied Clients</span>
+        </div>
+        <div>
+          <span class="font-headline text-3xl text-primary block">100%</span>
+          <span class="text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">Safety Record</span>
+        </div>
+        <div>
+          <span class="font-headline text-3xl text-primary block">24/7</span>
+          <span class="text-[10px] tracking-[0.2em] uppercase text-on-surface-variant">Concierge Service</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Bento -->
+    <section class="py-24 px-6 md:px-12 bg-surface">
+      <div class="max-w-7xl mx-auto mb-16">
+        <p class="text-primary text-[11px] font-bold tracking-[0.4em] uppercase mb-4">Our Services</p>
+        <h2 class="font-headline text-4xl md:text-5xl font-light text-on-surface">Curated Excellence</h2>
+      </div>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Airport -->
+        <div class="md:col-span-8 group relative h-[360px] overflow-hidden bg-neutral-900 cursor-pointer" onclick="showPage('services')">
+          <img alt="Airport Transfers" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKzWCR19J8-5ExGF2cy467nb-nwWnfg1jIgL1RUGgfvj-dewBNriucwjWPAgEFU-U88ewtBWf3fQ3bALE10k7rFSOSh93V3Gtpmm6Jd_mQoqKbFvKVe07w7_RbHflHPwBeWvX2nXySXBTJWak1RkxG5Z4Wh_-Yc0VLVxoKC5GGnTnWXxzsLbM8nOzKV6B0kdJu948K0euE3teYJkvVnW55MXoFtcaa3sSkz3bdnsmGWCdPHiQ8mv6tMsPg89z1tin92192CIjQrGw"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+          <div class="absolute inset-0 p-10 flex flex-col justify-end">
+            <h3 class="font-headline text-3xl text-on-surface mb-2">Airport Transfers</h3>
+            <p class="text-on-surface-variant max-w-md text-sm">Seamless pickups with real-time flight tracking and meet-and-greet service.</p>
+            <span class="mt-4 text-primary text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+          </div>
+        </div>
+        <!-- Corporate -->
+        <div class="md:col-span-4 group relative h-[360px] overflow-hidden bg-surface-container-low cursor-pointer" onclick="showPage('services')">
+          <div class="absolute inset-0 p-10 flex flex-col justify-between">
+            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 0, 'wght' 200;">business_center</span>
+            <div>
+              <h3 class="font-headline text-3xl text-on-surface mb-3">Corporate</h3>
+              <p class="text-sm text-on-surface-variant">Reliable logistics for professionals who demand efficiency and absolute privacy.</p>
+              <span class="mt-4 inline-block text-primary text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">View Details <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+            </div>
+          </div>
+        </div>
+        <!-- Wedding -->
+        <div class="md:col-span-12 group relative h-[420px] overflow-hidden bg-neutral-900 cursor-pointer" onclick="showPage('services')">
+          <img alt="Weddings" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38yuGJSW5gahTYFLhKmJph2RKT9__-VVjzLnMLljZEVjWbITPMXvzxHP1NLv_Zc28iMZVnvkA5W86gAZD_EqPar91B_pivENOJOjqbL5s4KWor0X1CYB41zrbiQePMMx3OoLqJKkz_Iu_mYZx936u3YCCA-zFVCAfCRh4y_URIJ_EKINeA7faODvr9kNqjxTFfO9N5_SqnJZ6uX_HsKsRKpCGCF1UVQUMfQQJTl_PDYcY4tv5DnquPAbYe_rcnPTi8-4gbqX4AyQ"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+          <div class="absolute inset-0 p-10 flex flex-col justify-end items-center text-center">
+            <h3 class="font-headline text-4xl md:text-5xl text-on-surface mb-4 italic">Unforgettable Weddings</h3>
+            <p class="text-on-surface-variant max-w-2xl mb-6">Arrive in grand style on your most important day. Our wedding packages are tailored to your specific dreams.</p>
+            <button onclick="showPage('book')" class="border-b border-primary text-primary pb-1 text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-yellow-300 transition-colors">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-surface-container-lowest">
+      <div class="max-w-6xl mx-auto px-6 md:px-10">
+        <div class="flex flex-col md:flex-row gap-16 items-start md:items-center">
+          <div class="w-full md:w-1/3">
+            <h2 class="font-headline text-4xl font-light mb-4">Voices of <br/>Excellence</h2>
+            <p class="text-on-surface-variant mb-6 text-sm">Hear from clients who have experienced the Obsidian standard.</p>
+            <div class="flex gap-1 text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 200;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 200;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 200;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 200;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 200;">star</span>
+            </div>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] mt-2">Rated 5/5 by over 500 clients</p>
+          </div>
+          <div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-surface-container p-8 border-l-2 border-primary-container">
+              <p class="italic text-on-surface mb-5 font-light text-sm leading-relaxed">"The punctuality and professionalism of USA Limos is unmatched. They truly understand the meaning of luxury service."</p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-surface-bright flex items-center justify-center">
+                  <span class="material-symbols-outlined text-sm">person</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold uppercase tracking-widest text-on-surface">Julian M.</h4>
+                  <p class="text-[10px] text-primary">CEO, TechGroup</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container p-8 border-l-2 border-primary-container">
+              <p class="italic text-on-surface mb-5 font-light text-sm leading-relaxed">"Our wedding chauffeur went above and beyond. The car was immaculate and the service was effortlessly smooth."</p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-surface-bright flex items-center justify-center">
+                  <span class="material-symbols-outlined text-sm">person</span>
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold uppercase tracking-widest text-on-surface">Sarah K.</h4>
+                  <p class="text-[10px] text-primary">Happy Bride</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-32 overflow-hidden bg-neutral-950 text-center">
+      <div class="absolute inset-0 z-0 opacity-20">
+        <img alt="City Night Lights" class="w-full h-full object-cover blur-sm"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB856bplu05slZiWVS1UVN8-AUk0BxyKmpSVkzjHZxXCPohb8HqwmJEWF7ovQk24qxOU0J09Mxh1WbJ_KNyYEzunn1YkoE3j7TdjOAuTCxSF36y78a7ir_NzlC6YM27ogvTWS1TcVKI8STQfM1W7nSoMH7z-wN--1xE0H1Fnki5My16yIO1OvA7AWnGbLKnlN594D6MJF0ODT_wQcZfeT9tTzbu0gBvf_f5ae5LOiVP87MhkeN04KxQxwIARs-aBYrL1icVrMq49gI"/>
+      </div>
+      <div class="relative z-10 px-6">
+        <h2 class="font-headline text-4xl md:text-6xl font-light text-on-surface mb-8 leading-tight">Ready for the Obsidian<br/>Experience?</h2>
+        <button onclick="showPage('book')" class="gold-gradient text-on-primary px-14 py-5 text-[12px] font-bold tracking-[0.3em] uppercase rounded-sm hover:scale-105 transition-transform">
+          Reserve Your Chauffeur
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-950 w-full border-t border-yellow-900/20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 px-8 md:px-12 py-16 w-full">
+      <div>
+        <div class="font-serif text-xl text-yellow-500 mb-4">USA Limos Service</div>
+        <p class="text-sm font-light text-neutral-400 leading-relaxed">© 2024 USA Limos Service. The Obsidian Standard of Travel. Elevating every mile with discrete luxury.</p>
+      </div>
+      <div class="flex flex-col space-y-3">
+        <h5 class="text-on-surface text-[11px] font-bold tracking-[0.2em] uppercase mb-1">Fleet</h5>
+        <button onclick="showPage('fleet')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Luxury Sedan</button>
+        <button onclick="showPage('fleet')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Premium SUV</button>
+        <button onclick="showPage('fleet')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Stretch Limo</button>
+      </div>
+      <div class="flex flex-col space-y-3">
+        <h5 class="text-on-surface text-[11px] font-bold tracking-[0.2em] uppercase mb-1">Services</h5>
+        <button onclick="showPage('services')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Airport Transfers</button>
+        <button onclick="showPage('services')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Weddings</button>
+        <button onclick="showPage('services')" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all text-left">Corporate</button>
+      </div>
+      <div class="flex flex-col space-y-3">
+        <h5 class="text-on-surface text-[11px] font-bold tracking-[0.2em] uppercase mb-1">Contact</h5>
+        <a href="tel:+18005550199" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">(800) 555-0199</a>
+        <span class="text-xs text-neutral-500">New York · Los Angeles · Chicago</span>
+        <div class="flex space-x-3 mt-2">
+          <span class="material-symbols-outlined text-neutral-500 hover:text-yellow-400 cursor-pointer transition-colors">public</span>
+          <span class="material-symbols-outlined text-neutral-500 hover:text-yellow-400 cursor-pointer transition-colors">mail</span>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant/10 py-6 px-12 flex justify-between items-center text-[10px] tracking-widest text-neutral-600 uppercase">
+      <span>Designed for the discerning</span>
+      <span>Est. 1998</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ PAGE: FLEET ═══════════════════════ -->
+<div id="page-fleet" class="page">
+  <main class="pt-28 pb-20">
+    <!-- Hero -->
+    <section class="px-6 md:px-12 mb-16 max-w-7xl mx-auto">
+      <p class="text-primary text-[11px] font-bold tracking-[0.4em] uppercase mb-4 flex items-center gap-3">
+        <span class="w-8 h-[1px] bg-primary"></span> Our Vehicles
+      </p>
+      <h1 class="font-serif text-4xl md:text-6xl font-light tracking-tight text-on-surface mb-5">
+        The <span class="italic text-primary">Obsidian</span> Fleet
+      </h1>
+      <p class="font-body text-on-surface-variant max-w-2xl text-base leading-relaxed">
+        Experience the pinnacle of executive transport. Our meticulously maintained vehicles represent the standard in luxury, safety, and discretion.
+      </p>
+      <div class="h-px w-24 bg-primary-container/30 mt-8"></div>
+    </section>
+
+    <!-- Fleet Grid -->
+    <section class="px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Lincoln Town Car -->
+        <article class="bg-surface-container-low obsidian-card-shadow group relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+          <div class="aspect-[16/10] overflow-hidden bg-neutral-900">
+            <img alt="Lincoln Town Car" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj1Nz9m6v9ZAYbX0apLB1KEV4MXMJDsAq7HpjusR9zIXyHDIVgbbfiwdfJl2o3blCIPZiBAEud10ENSfHHeKB77BdMLana6-5pVaHnk7V_t5Hu1d3DCDNgnD-oNBn2au9gylKz3NrxZtKpD_UeYpwFUbCQvSJDbfTjEmuJjtXL_ztUU80ASKBYf0VUP9-RckxzUaBoiGuSdkPhCw0oORefNIHx0l7ZbhKgE7TCZeGfTcFVVnAom7ErKg9ziaLORYhQWIEgt9PoYN0"/>
+          </div>
+          <div class="p-7">
+            <div class="flex justify-between items-start mb-3">
+              <h2 class="font-headline text-2xl font-light text-on-surface">Lincoln Town Car</h2>
+              <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary border border-primary/20 px-2 py-1">Executive</span>
+            </div>
+            <div class="flex items-center gap-5 mb-6">
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">person</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">3 Seats</span></div>
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">luggage</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">3 Bags</span></div>
+            </div>
+            <ul class="space-y-2 mb-8">
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>High-Speed WiFi</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Premium Leather Interior</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Climate Control</li>
+            </ul>
+            <button onclick="showPage('book')" class="w-full border border-primary/30 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-on-surface hover:bg-primary hover:text-on-primary transition-all duration-300">
+              Select &amp; Book
+            </button>
+          </div>
+        </article>
+        <!-- Cadillac Escalade -->
+        <article class="bg-surface-container-low obsidian-card-shadow group relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+          <div class="aspect-[16/10] overflow-hidden bg-neutral-900">
+            <img alt="Cadillac Escalade" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqjIZOULXZpMQ21UokpP6Ex0Nja_CRL4kyqiPkrsfhpmqYJeyri7wU2ia9pOv8yNudYpQbTkgVvbsb3wWbXypkXV-vB2oKPVN-R0HaH1OsRSLuQU-Dvql7RHriNwJH6f8E-q9MgJeLF1j6WPcu_WNWLU695LkQcG-nA2Tme6-NJyQ9zUr4lLFPHkMmvMeu4vLAYXfFd1YjVD-ZtQoLXPAs7K9s1KjylVUC_2zcFCIl5PrGw3srg0rB-G5-0U4iO4CciwICWkQkSO8"/>
+          </div>
+          <div class="p-7">
+            <div class="flex justify-between items-start mb-3">
+              <h2 class="font-headline text-2xl font-light text-on-surface">Cadillac Escalade</h2>
+              <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary border border-primary/20 px-2 py-1">Premium SUV</span>
+            </div>
+            <div class="flex items-center gap-5 mb-6">
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">group</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">6 Seats</span></div>
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">luggage</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">6 Bags</span></div>
+            </div>
+            <ul class="space-y-2 mb-8">
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>High-Speed WiFi</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Bose Surround System</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Multi-Zone Climate</li>
+            </ul>
+            <button onclick="showPage('book')" class="w-full gold-gradient py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-on-primary hover:opacity-90 transition-all duration-300">
+              Select &amp; Book
+            </button>
+          </div>
+        </article>
+        <!-- Mercedes S-Class -->
+        <article class="bg-surface-container-low obsidian-card-shadow group relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+          <div class="aspect-[16/10] overflow-hidden bg-neutral-900">
+            <img alt="Mercedes-Benz S-Class" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCcKh4ky0guu6NUWUEc8LfZLSBn6a97ht84o4WB6cn3ER7iUR8Urx5C9AZNc9yN2X5XhAtMEZC1nXL7A_nN0PUUDZ4gJsnQCi1ACPechQNxPSgr75OkA5m3BzZwO9tDhYyI7jgrhMu-fF2mrFOdTwn0J73ATuL-Yb1BhGuPNI53CuEzccZE2dQJwBHra3S6JFjowPtls3LQO8lTXBg-jvkF9UVDtbeemECmgC1G1fQAz79Z1A7kyumhQmoZl-Nv2Tt13wXavjuGZM"/>
+          </div>
+          <div class="p-7">
+            <div class="flex justify-between items-start mb-3">
+              <h2 class="font-headline text-2xl font-light text-on-surface">Mercedes S-Class</h2>
+              <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-primary border border-primary/20 px-2 py-1">Luxury</span>
+            </div>
+            <div class="flex items-center gap-5 mb-6">
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">person</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">3 Seats</span></div>
+              <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary/70" style="font-size:18px;">luggage</span><span class="text-xs font-light text-on-surface-variant uppercase tracking-widest">2 Bags</span></div>
+            </div>
+            <ul class="space-y-2 mb-8">
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>High-Speed WiFi</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Nappa Leather Seats</li>
+              <li class="flex items-center gap-2 text-xs font-medium tracking-wider text-on-surface-variant uppercase"><span class="material-symbols-outlined text-primary" style="font-size:16px;">check_circle</span>Burmester 4D Sound</li>
+            </ul>
+            <button onclick="showPage('book')" class="w-full border border-primary/30 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase text-on-surface hover:bg-primary hover:text-on-primary transition-all duration-300">
+              Select &amp; Book
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="mt-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="absolute -top-10 -left-8 text-8xl font-serif text-primary/10 select-none leading-none">"</div>
+          <blockquote class="font-serif text-2xl md:text-3xl italic font-light text-on-surface leading-snug">
+            Luxury must be comfortable, otherwise it is not luxury. Every vehicle in our fleet is chosen to provide a sanctuary from the world outside.
+          </blockquote>
+          <p class="mt-6 text-xs font-bold tracking-[0.4em] uppercase text-primary">— The Obsidian Standard</p>
+        </div>
+        <div class="bg-surface-container h-72 relative overflow-hidden">
+          <img alt="Luxury interior" class="w-full h-full object-cover opacity-50"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcpwigWDjQLqJ5b5KKNUzEnjiKHS3IazNcmvD7NIYhFWANjPmcxW1mgZpaq6UV8cX43ACcASbxYPiCdY-gfu241ngOPaEdQwa5ogUel8nY8B33Hz59QSxvd9r1Mwu_DhgwJY-9tegNo06GRaUzMOw2QmgXJ6Z35_qMOvZvRpijeaT6GSvklr7reGmVzme-fxsD_xhdfyAQ-WE5F6-3T_dT3XLm9CXAKzVpTOYIDrVAhNhh2_woJGtrvSVLIc6W2wCwfTgsUhxs_bI"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-20 px-6 text-center">
+      <button onclick="showPage('book')" class="gold-gradient text-on-primary px-12 py-4 text-[11px] font-bold tracking-[0.3em] uppercase rounded-sm hover:opacity-90 active:scale-95 transition-all">
+        Reserve a Vehicle
+      </button>
+    </section>
+  </main>
+  <!-- Shared Footer (Fleet) -->
+  <footer class="bg-neutral-950 w-full border-t border-yellow-900/20 mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-8 md:px-12 py-14 w-full">
+      <div><div class="font-serif text-xl text-yellow-500 mb-4">USA Limos Service</div><p class="text-sm font-light text-neutral-400 leading-relaxed">© 2024 USA Limos Service. Elevating every journey into a masterpiece of movement.</p></div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary">Services</h4>
+        <button onclick="showPage('services')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Airport Transfers</button>
+        <button onclick="showPage('services')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Weddings</button>
+        <button onclick="showPage('services')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Corporate</button>
+      </div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary">Contact</h4>
+        <a href="tel:+18005550199" class="block text-sm font-light text-neutral-400">New York · Los Angeles · Chicago<br/>(800) 555-0199</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ PAGE: SERVICES ═══════════════════════ -->
+<div id="page-services" class="page">
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="relative h-[560px] flex items-center px-8 md:px-12 overflow-hidden bg-surface">
+      <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover opacity-40"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAge5a6ZxZBMEojG7w6B6x4vCBIze54k3_yS_pVCfQ3LcYvcuSn1JB37UmoDDMwnzWEXJacsw4CHoY1EOw5unFHMqejeYJLB8Okp3X_-L7xx9LjSY9NTfErpk0QREPUPkYI7-fhIPx41SxIKS_p_W7RCScji5we45T1SZ4o2ysR0zQrRQREm5MsaiZgpVCLdFlRQh0-R1NLi6UptuDSRz5ewCidfd2GZpl4qQHB_KIH-hIqcqa-ClyuSxanG-N8T5NchfNh4ByAhOU"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl">
+        <span class="font-label text-primary tracking-[0.4rem] uppercase text-xs mb-4 block">Elite Transportation</span>
+        <h1 class="font-headline text-5xl md:text-7xl text-on-surface mb-6 leading-tight">Curated <span class="italic font-light">Excellence</span></h1>
+        <p class="font-body text-on-surface-variant text-lg max-w-xl leading-relaxed">
+          Beyond simple transit, we provide a sanctuary of productivity and peace. Experience the pinnacle of premier chauffeur service.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Bento Grid -->
+    <section class="px-6 md:px-12 py-24 bg-surface">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-5">
+        <!-- Airport Transfers -->
+        <div class="md:col-span-8 group relative h-72 overflow-hidden bg-surface-container-low rounded-sm">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUOwYbBiIk1Vw0OxVmceibLM9iBgW-HwlskoeuhXdV3dPmmDg7VnxMuN_wr7yKpOm6pTGHoRFQRuHu6CqxwRJBT9EqU9EGG7hwZaHt49SrPI67A_hJKPEKU2pgE0if33Bw5Ez85sudLS1RaL5353tvbgiVZqWDfQtcNhMXKXnGWduTHLcVLrEK2YyFyoydFBldTukwbVeouBlQK2DFL3JCtlqgJjbRQReWS_4ZNv1H3AYy4GVX49sBJRSyeBCtHtI6Q-6PLz4"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 w-full">
+            <h3 class="font-headline text-3xl text-on-surface mb-2">Airport Transfers</h3>
+            <p class="font-body text-on-surface-variant max-w-md text-sm mb-5">Punctual, private, and perfectly timed. We monitor your flight in real-time for seamless arrivals.</p>
+            <div class="flex items-center gap-5">
+              <button onclick="showPage('book')" class="text-primary font-label uppercase tracking-widest text-xs border-b border-primary/30 pb-0.5 hover:border-primary transition-all">Book Now</button>
+            </div>
+          </div>
+        </div>
+        <!-- Wedding -->
+        <div class="md:col-span-4 group relative h-72 overflow-hidden bg-surface-container-low rounded-sm">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpcqUANyl2spoiBPkhcLthB2Z1sBeu_hAx2dnJ77zDs_gGxFQ5vORYNwAkgeBx4SMn8zbkzH_x6cbBDRfcqfpRsSEhUCjCRZVYFAnxzU4n0IPyia9khem8uziZG-abc6GAnFVms9L4hwLhicc8pCbfDLw91NzekCdZCMcPH2tKMpivvjfr68g2TLAXZF-cSk8yp2Rknw_TsaulFYrpUG_M2UZBZ7AAC2fOuMRnfBaWlyMsZkyK7WUlYGDspp7sWHXgP8r3UnpFCdY"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <h3 class="font-headline text-3xl text-on-surface mb-2">Weddings</h3>
+            <p class="font-body text-on-surface-variant text-sm mb-4">Arrive in timeless elegance. Champagne service included.</p>
+            <button onclick="showPage('book')" class="gold-gradient text-on-primary font-label uppercase tracking-widest text-[10px] px-5 py-2">Inquire</button>
+          </div>
+        </div>
+        <!-- Corporate -->
+        <div class="md:col-span-4 group relative h-72 overflow-hidden bg-surface-container-low rounded-sm">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEd5rbpXJqRObARK66vJc-yRpNiFDRr-_bJ1mSKaFRSQjTfBWy90E7KofLeUfCeV2tSv6t4Vz3hBVnjnDL6KkSPdUWtbeHK2qqsb_J7uU6bar2nZz59_i-oOTgi65EcbaXXIXqF66tmcuaPnBZ4d9Yon6NJGYdSDS3-PG8plLTVkZd1wcw2gulikCurO69IXb_hd8b644Ltaf6r24R5_8F7nuU6QatIAaj23CacBMHDW9dHAJi26MI6EgAYeX5fR-aB3jcggbbu94"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <h3 class="font-headline text-3xl text-on-surface mb-2">Corporate Travel</h3>
+            <p class="font-body text-on-surface-variant text-sm mb-4">Mobile offices designed for the modern executive.</p>
+            <button onclick="showPage('book')" class="text-primary font-label uppercase tracking-widest text-[10px] border-b border-primary/20 pb-0.5">Book Now</button>
+          </div>
+        </div>
+        <!-- Party & Events -->
+        <div class="md:col-span-8 group relative h-72 overflow-hidden bg-surface-container-low rounded-sm">
+          <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYVyViS-bDip-tdpCbka9IHjF32_hoQivDyPqRwofs68ZNcooTQHyByT7gER7wF5FFp-aQFLixIROMB-vuaUEJva_zkmXUwSzl-U14URl1t7LbULsnfGxGoSB07Gts784vI1S5KunUP3OsnBvJX_MdIuov2c4qAb9fMBELhdbSpYr1OgEwOVjcjHzbjQw2byfQq9cAPXdnyMztEqr0M1qDaUdth8x5zlGQliE9IU"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 flex justify-between items-end w-full">
+            <div class="max-w-sm">
+              <h3 class="font-headline text-3xl text-on-surface mb-2">Party &amp; Events</h3>
+              <p class="font-body text-on-surface-variant text-sm">From galas to private celebrations, we ensure an unforgettable journey.</p>
+            </div>
+            <button onclick="showPage('book')" class="gold-gradient text-on-primary font-label uppercase tracking-widest text-[10px] px-8 py-3 flex-shrink-0 ml-4">Book Event</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 px-6 md:px-12 bg-surface-container-low">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <span class="font-label text-primary tracking-[0.3rem] uppercase text-[10px] mb-3 block">The Obsidian Standard</span>
+          <h2 class="font-headline text-4xl text-on-surface">Why Our Service?</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div class="space-y-4">
+            <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200;">verified_user</span>
+            <h4 class="font-headline text-2xl text-on-surface">Vetted Excellence</h4>
+            <p class="font-body text-on-surface-variant leading-relaxed text-sm">Every chauffeur undergoes rigorous background checks and defensive driving certification.</p>
+          </div>
+          <div class="space-y-4">
+            <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200;">schedule</span>
+            <h4 class="font-headline text-2xl text-on-surface">Precision Punctuality</h4>
+            <p class="font-body text-on-surface-variant leading-relaxed text-sm">Our advanced dispatch technology ensures your chauffeur arrives 15 minutes early, every time.</p>
+          </div>
+          <div class="space-y-4">
+            <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'wght' 200;">diamond</span>
+            <h4 class="font-headline text-2xl text-on-surface">Pristine Fleet</h4>
+            <p class="font-body text-on-surface-variant leading-relaxed text-sm">Our vehicles are late-model, meticulously maintained, and detailed daily for your comfort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-32 px-6 text-center overflow-hidden bg-surface-container-lowest">
+      <h2 class="font-headline text-4xl md:text-5xl text-on-surface mb-6">Ready to elevate your <span class="italic font-light">journey?</span></h2>
+      <p class="font-body text-on-surface-variant text-lg mb-10">Book your Obsidian experience today and redefine what it means to travel.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="showPage('book')" class="gold-gradient text-on-primary font-label uppercase tracking-widest text-xs px-12 py-4">Instant Reservation</button>
+        <button onclick="showPage('fleet')" class="border border-outline-variant hover:bg-surface-bright text-on-surface font-label uppercase tracking-widest text-xs px-12 py-4 transition-all">View Fleet</button>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-neutral-950 w-full border-t border-yellow-900/20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-8 md:px-12 py-14 w-full">
+      <div><div class="font-serif text-xl text-yellow-500 mb-4">USA Limos Service</div><p class="text-sm font-light text-neutral-400 leading-relaxed">The premier luxury transportation service for the discerning traveler.</p></div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary">Explore</h4>
+        <button onclick="showPage('fleet')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Fleet</button>
+        <button onclick="showPage('about')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">About Us</button>
+        <button onclick="showPage('book')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Book Now</button>
+      </div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary">Contact</h4>
+        <a href="tel:+18005550199" class="block text-sm font-light text-neutral-400">New York · Los Angeles · Chicago<br/>(800) 555-0199</a>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant/10 py-6 px-12 text-center text-[10px] tracking-widest text-neutral-600 uppercase">© 2024 Obsidian Luxury Chauffeur. All rights reserved.</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ PAGE: ABOUT ═══════════════════════ -->
+<div id="page-about" class="page">
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="relative h-[640px] flex items-center px-8 md:px-12 overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img class="w-full h-full object-cover opacity-60 grayscale-[0.5]"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIZchjKjWBu1wY9DsKHm8S23LWJMOzAOdU4SvTfM1N70NUIiNSX6H-xVww1s53e4k3moAv6w5YaDv55OM0K9_T6FU7-tkaAHCtNbCimA5Acw39HaKQOt_9l4C6eRE_Vn_FWYmmyIqQM9FzVYx8nkXMhBHG4uLCguAB-bX_EMwO79qn7MtSFkaUxd2tFfXEdTzZmcocu377EHc8LRRZfhnMbhbFK50sdmrJWUsqF79LzFkyzIWzWwuQgkeitn-gcOBqKr8NpH4jeRE"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl">
+        <span class="font-label text-primary-fixed-dim tracking-[0.4rem] uppercase text-[10px] mb-5 block">Est. 1998</span>
+        <h1 class="font-headline text-6xl md:text-8xl text-on-background leading-none mb-6">The <span class="italic text-primary">Obsidian</span> Legacy.</h1>
+        <p class="font-body text-xl text-on-surface-variant max-w-xl font-light leading-relaxed">
+          More than a journey. A testament to the silent, effortless luxury of the midnight concierge. We don't just drive; we curate time.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission & Image -->
+    <section class="px-6 md:px-12 py-24 bg-surface">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-7 bg-surface-container-low p-10 md:p-14 flex flex-col justify-center">
+          <h2 class="font-headline text-4xl md:text-5xl mb-7">Our Mission</h2>
+          <p class="font-body text-on-surface-variant text-base leading-relaxed mb-10">
+            To redefine the standard of American luxury transport through an unwavering commitment to <span class="text-primary italic">discretion</span>, <span class="text-primary italic">precision</span>, and <span class="text-primary italic">grace</span>. At Obsidian, we believe that true luxury is felt, not just seen.
+          </p>
+          <div class="grid grid-cols-2 gap-6 border-t border-outline-variant/20 pt-10">
+            <div><span class="font-headline text-3xl text-primary block mb-1">100%</span><span class="font-label text-[10px] tracking-[0.15rem] uppercase text-on-surface-variant">Safety Record</span></div>
+            <div><span class="font-headline text-3xl text-primary block mb-1">25+</span><span class="font-label text-[10px] tracking-[0.15rem] uppercase text-on-surface-variant">Years of Excellence</span></div>
+          </div>
+        </div>
+        <div class="md:col-span-5 relative group overflow-hidden min-h-[360px]">
+          <img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu-e3KkQnF6jPI0jfolXCt5_EB3x954IWeK5_df5BKwse2Li6YbaP9Fy7p0sKz7ecz-YouuuqsaNOltzKualrxX7fo-zGAOE2t829f0aZwv2xKcfL9wtmZsLmwDIolrD9r1-2gf3znF9ZLQ14Q-paCGwIdcWzDyGlMzQRxHvkISCzpcB8yDB8pDNCRozfL9bN1JuIeSCrq3W8H0LrMB4kUIzJoG65tyXbA8X76AhFBdbK1p5cljBGUvYK58k75JLb4h5lWVoz8j60"/>
+          <div class="absolute bottom-6 left-6 bg-background/80 backdrop-blur-md p-4 max-w-[180px]">
+            <p class="font-label text-[9px] uppercase tracking-widest leading-relaxed">The hands of experience guide every mile of your journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Standards -->
+    <section class="py-24 bg-surface-container-lowest">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-20">
+          <h2 class="font-headline text-5xl mb-3 italic">The Obsidian Standard</h2>
+          <div class="w-20 h-[1px] bg-primary mx-auto opacity-50"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-14">
+          <div class="text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-6" style="font-variation-settings:'wght' 200;">shield_with_heart</span>
+            <h3 class="font-headline text-2xl mb-3">Uncompromising Safety</h3>
+            <p class="font-body text-on-surface-variant font-light text-sm leading-loose">Every vehicle undergoes a 50-point daily inspection. Our chauffeurs are trained in defensive driving and tactical security protocols.</p>
+          </div>
+          <div class="text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-6" style="font-variation-settings:'wght' 200;">encrypted</span>
+            <h3 class="font-headline text-2xl mb-3">Total Discretion</h3>
+            <p class="font-body text-on-surface-variant font-light text-sm leading-loose">Your privacy is our most precious cargo. From sound-isolated cabins to non-disclosure agreements, your secrets travel with you.</p>
+          </div>
+          <div class="text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-6" style="font-variation-settings:'wght' 200;">workspace_premium</span>
+            <h3 class="font-headline text-2xl mb-3">Precision Timing</h3>
+            <p class="font-body text-on-surface-variant font-light text-sm leading-loose">If we are on time, we are late. Our logistics team monitors real-time flight data and traffic patterns to ensure seamless transitions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-32 bg-surface-container-lowest border-t border-outline-variant/10">
+      <div class="max-w-3xl mx-auto text-center px-6">
+        <span class="font-headline italic text-primary text-xl mb-6 block">Your Journey Awaits</span>
+        <h2 class="font-headline text-4xl md:text-6xl mb-10">Prepare for Departure.</h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <button onclick="showPage('book')" class="px-10 py-4 gold-gradient text-on-primary font-label text-xs uppercase tracking-[0.3rem] font-extrabold hover:shadow-[0_0_30px_rgba(242,202,80,0.3)] transition-all w-full sm:w-auto">
+            Reserve Your Service
+          </button>
+          <button onclick="showPage('fleet')" class="px-10 py-4 border border-primary/30 text-primary font-label text-xs uppercase tracking-[0.3rem] hover:bg-primary/5 transition-colors w-full sm:w-auto">
+            View The Fleet
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-neutral-950 w-full border-t border-yellow-900/20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-8 md:px-12 py-14 w-full">
+      <div><div class="font-serif text-xl text-yellow-500 mb-4">OBSIDIAN</div><p class="text-sm font-light text-neutral-400 leading-relaxed">The quintessential luxury chauffeur service for global travelers and discerning professionals.</p></div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary mb-2">Navigation</h4>
+        <button onclick="showPage('fleet')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Fleet</button>
+        <button onclick="showPage('services')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Services</button>
+        <button onclick="showPage('book')" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Book Now</button>
+      </div>
+      <div class="space-y-3"><h4 class="text-[11px] font-bold tracking-[0.2em] uppercase text-primary mb-2">Legal</h4>
+        <a href="#" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Terms</a>
+        <a href="#" class="block text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">Privacy</a>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant/10 py-6 px-12 text-center text-[10px] tracking-widest text-neutral-600 uppercase">© 2024 Obsidian Luxury Chauffeur. All rights reserved.</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ PAGE: BOOK NOW ═══════════════════════ -->
+<div id="page-book" class="page">
+  <main class="min-h-screen pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-3 space-y-10">
+        <div>
+          <h1 class="font-serif text-3xl md:text-4xl font-light tracking-tight text-on-surface mb-2">Reservation</h1>
+          <p class="text-on-surface-variant text-sm font-light">The Obsidian Standard of Travel.</p>
+        </div>
+        <!-- Steps -->
+        <nav class="space-y-7 relative" id="booking-nav">
+          <div class="absolute left-4 top-2 bottom-2 w-px bg-outline-variant/30"></div>
+          <div class="step-indicator relative flex items-center gap-5 cursor-pointer" data-step="1" onclick="goToStep(1)">
+            <div id="step-circle-1" class="w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-on-primary z-10 shadow-[0_0_15px_rgba(242,202,80,0.3)]">
+              <span class="text-xs font-bold">01</span>
+            </div>
+            <div><span class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Step 1</span><span class="block text-sm font-medium text-on-surface">Location Details</span></div>
+          </div>
+          <div class="step-indicator relative flex items-center gap-5 cursor-pointer" data-step="2" onclick="goToStep(2)">
+            <div id="step-circle-2" class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/50 flex items-center justify-center text-on-surface-variant z-10">
+              <span class="text-xs font-bold">02</span>
+            </div>
+            <div><span class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Step 2</span><span class="block text-sm font-medium text-on-surface-variant">Date &amp; Time</span></div>
+          </div>
+          <div class="step-indicator relative flex items-center gap-5 cursor-pointer" data-step="3" onclick="goToStep(3)">
+            <div id="step-circle-3" class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/50 flex items-center justify-center text-on-surface-variant z-10">
+              <span class="text-xs font-bold">03</span>
+            </div>
+            <div><span class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Step 3</span><span class="block text-sm font-medium text-on-surface-variant">Vehicle Selection</span></div>
+          </div>
+          <div class="step-indicator relative flex items-center gap-5 cursor-pointer" data-step="4" onclick="goToStep(4)">
+            <div id="step-circle-4" class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/50 flex items-center justify-center text-on-surface-variant z-10">
+              <span class="text-xs font-bold">04</span>
+            </div>
+            <div><span class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Step 4</span><span class="block text-sm font-medium text-on-surface-variant">Confirm &amp; Pay</span></div>
+          </div>
+        </nav>
+        <!-- Support -->
+        <div class="bg-surface-container-low p-6 rounded-sm border-l-2 border-primary/30">
+          <p class="text-xs text-on-surface-variant uppercase tracking-widest mb-3">Concierge Support</p>
+          <p class="text-sm text-on-surface mb-4 font-light leading-relaxed">24/7 desk available for bespoke arrangements.</p>
+          <a class="text-primary text-xs font-bold tracking-widest uppercase flex items-center gap-2 hover:gap-3 transition-all" href="tel:+18005550199">
+            1-800-USA-LIMO <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Form Canvas -->
+      <section class="lg:col-span-9">
+        <div class="bg-surface-container-low rounded-sm overflow-hidden">
+
+          <!-- STEP 1: Location -->
+          <div id="booking-step-1" class="booking-step active p-8 md:p-12 space-y-10">
+            <header class="space-y-3">
+              <h2 class="font-serif text-2xl md:text-3xl font-light tracking-tight text-on-surface italic">Where shall we collect you?</h2>
+              <p class="text-on-surface-variant font-light text-sm max-w-2xl">Enter your pickup point and destination below.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div class="space-y-9">
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-3">Pickup Address</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-0 text-primary-fixed-dim" style="font-size:18px;">location_on</span>
+                    <input id="pickup" class="w-full bg-transparent border-b border-outline-variant focus:border-primary pt-1 pb-3 pl-7 text-on-surface font-light placeholder:text-neutral-700 text-sm transition-all" placeholder="JFK International Airport, NY" type="text"/>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold mb-3">Destination Address</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-0 text-on-surface-variant" style="font-size:18px;">flag</span>
+                    <input id="dropoff" class="w-full bg-transparent border-b border-outline-variant focus:border-primary pt-1 pb-3 pl-7 text-on-surface font-light placeholder:text-neutral-700 text-sm transition-all" placeholder="The Plaza Hotel, 5th Avenue" type="text"/>
+                  </div>
+                </div>
+                <div class="flex gap-7">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input checked name="trip_type" type="radio" class="accent-yellow-500"/>
+                    <span class="text-xs uppercase tracking-widest text-on-surface-variant">One Way</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input name="trip_type" type="radio" class="accent-yellow-500"/>
+                    <span class="text-xs uppercase tracking-widest text-on-surface-variant">Hourly Service</span>
+                  </label>
+                </div>
+              </div>
+              <div class="relative h-64 md:h-full min-h-[260px] rounded-sm overflow-hidden bg-surface-container-lowest">
+                <div class="absolute inset-0 grayscale opacity-40 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+                <div class="absolute top-4 left-4 bg-surface-container-lowest/80 backdrop-blur-md p-2.5 px-3 border border-outline-variant/20">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full gold-gradient shadow-[0_0_8px_#f2ca50]"></div>
+                    <span class="text-[10px] uppercase tracking-widest font-bold">Route Visualizer</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Step footer -->
+            <div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+              <button onclick="showPage('home')" class="text-on-surface-variant text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-on-surface transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">west</span> Exit Booking
+              </button>
+              <button onclick="goToStep(2)" class="gold-gradient text-on-primary px-8 py-3.5 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+                Next: Timing <span class="material-symbols-outlined text-sm">east</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Date & Time -->
+          <div id="booking-step-2" class="booking-step p-8 md:p-12 space-y-10">
+            <header class="space-y-3">
+              <h2 class="font-serif text-2xl md:text-3xl font-light tracking-tight text-on-surface italic">When shall we arrive?</h2>
+              <p class="text-on-surface-variant font-light text-sm">Precision begins with the perfect moment.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div class="space-y-8">
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-3">Pickup Date</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-0 text-primary-fixed-dim" style="font-size:18px;">calendar_today</span>
+                    <input id="pickup-date" class="w-full bg-transparent border-b border-outline-variant focus:border-primary pt-1 pb-3 pl-7 text-on-surface font-light text-sm transition-all" type="date"/>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-3">Pickup Time</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-0 text-primary-fixed-dim" style="font-size:18px;">schedule</span>
+                    <input id="pickup-time" class="w-full bg-transparent border-b border-outline-variant focus:border-primary pt-1 pb-3 pl-7 text-on-surface font-light text-sm transition-all" type="time"/>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold mb-3">Passengers</label>
+                  <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-0 text-on-surface-variant" style="font-size:18px;">group</span>
+                    <select id="passengers" class="w-full bg-transparent border-b border-outline-variant focus:border-primary pt-1 pb-3 pl-7 text-on-surface font-light text-sm transition-all appearance-none cursor-pointer">
+                      <option value="1" class="bg-neutral-900">1 passenger</option>
+                      <option value="2" class="bg-neutral-900">2 passengers</option>
+                      <option value="3" class="bg-neutral-900">3 passengers</option>
+                      <option value="4" class="bg-neutral-900">4 passengers</option>
+                      <option value="5" class="bg-neutral-900">5 passengers</option>
+                      <option value="6" class="bg-neutral-900">6+ passengers</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-surface-container p-6 rounded-sm flex flex-col gap-4">
+                <h3 class="font-label text-xs uppercase tracking-widest text-primary mb-2">Special Requests</h3>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" class="accent-yellow-500 w-4 h-4"/>
+                  <span class="text-xs text-on-surface-variant">Child seat required</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" class="accent-yellow-500 w-4 h-4"/>
+                  <span class="text-xs text-on-surface-variant">Champagne / beverages</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" class="accent-yellow-500 w-4 h-4"/>
+                  <span class="text-xs text-on-surface-variant">Meet &amp; greet placard</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" class="accent-yellow-500 w-4 h-4"/>
+                  <span class="text-xs text-on-surface-variant">Extra luggage space</span>
+                </label>
+                <div class="mt-3">
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold mb-2">Notes for driver</label>
+                  <textarea class="w-full bg-transparent border-b border-outline-variant focus:border-primary text-on-surface font-light text-sm resize-none" rows="3" placeholder="Any additional instructions..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+              <button onclick="goToStep(1)" class="text-on-surface-variant text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-on-surface transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">west</span> Back
+              </button>
+              <button onclick="goToStep(3)" class="gold-gradient text-on-primary px-8 py-3.5 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+                Next: Vehicle <span class="material-symbols-outlined text-sm">east</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Vehicle Selection -->
+          <div id="booking-step-3" class="booking-step p-8 md:p-12 space-y-8">
+            <header class="space-y-3">
+              <h2 class="font-serif text-2xl md:text-3xl font-light tracking-tight text-on-surface italic">Select your vehicle.</h2>
+              <p class="text-on-surface-variant font-light text-sm">Every vehicle in our fleet meets the Obsidian standard.</p>
+            </header>
+            <div class="space-y-4">
+              <!-- Vehicle options -->
+              <label class="block cursor-pointer">
+                <input type="radio" name="vehicle" value="lincoln" class="hidden peer" checked/>
+                <div class="peer-checked:border-primary peer-checked:bg-primary/5 border border-outline-variant/30 p-5 transition-all hover:border-primary/50 flex items-center gap-6">
+                  <div class="w-20 h-14 bg-surface-container rounded overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj1Nz9m6v9ZAYbX0apLB1KEV4MXMJDsAq7HpjusR9zIXyHDIVgbbfiwdfJl2o3blCIPZiBAEud10ENSfHHeKB77BdMLana6-5pVaHnk7V_t5Hu1d3DCDNgnD-oNBn2au9gylKz3NrxZtKpD_UeYpwFUbCQvSJDbfTjEmuJjtXL_ztUU80ASKBYf0VUP9-RckxzUaBoiGuSdkPhCw0oORefNIHx0l7ZbhKgE7TCZeGfTcFVVnAom7ErKg9ziaLORYhQWIEgt9PoYN0" alt="Lincoln"/>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-center">
+                      <h3 class="font-headline text-xl text-on-surface">Lincoln Town Car</h3>
+                      <span class="text-primary font-bold text-sm">from $85/hr</span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1">3 passengers · 3 bags · Executive</p>
+                  </div>
+                  <div class="w-5 h-5 rounded-full border-2 border-primary peer-checked:bg-primary flex-shrink-0 flex items-center justify-center">
+                    <div class="w-2 h-2 rounded-full bg-on-primary peer-checked:block hidden"></div>
+                  </div>
+                </div>
+              </label>
+              <label class="block cursor-pointer">
+                <input type="radio" name="vehicle" value="escalade" class="hidden peer"/>
+                <div class="peer-checked:border-primary peer-checked:bg-primary/5 border border-outline-variant/30 p-5 transition-all hover:border-primary/50 flex items-center gap-6">
+                  <div class="w-20 h-14 bg-surface-container rounded overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqjIZOULXZpMQ21UokpP6Ex0Nja_CRL4kyqiPkrsfhpmqYJeyri7wU2ia9pOv8yNudYpQbTkgVvbsb3wWbXypkXV-vB2oKPVN-R0HaH1OsRSLuQU-Dvql7RHriNwJH6f8E-q9MgJeLF1j6WPcu_WNWLU695LkQcG-nA2Tme6-NJyQ9zUr4lLFPHkMmvMeu4vLAYXfFd1YjVD-ZtQoLXPAs7K9s1KjylVUC_2zcFCIl5PrGw3srg0rB-G5-0U4iO4CciwICWkQkSO8" alt="Escalade"/>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-center">
+                      <h3 class="font-headline text-xl text-on-surface">Cadillac Escalade</h3>
+                      <span class="text-primary font-bold text-sm">from $120/hr</span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1">6 passengers · 6 bags · Premium SUV</p>
+                  </div>
+                  <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex-shrink-0"></div>
+                </div>
+              </label>
+              <label class="block cursor-pointer">
+                <input type="radio" name="vehicle" value="mercedes" class="hidden peer"/>
+                <div class="peer-checked:border-primary peer-checked:bg-primary/5 border border-outline-variant/30 p-5 transition-all hover:border-primary/50 flex items-center gap-6">
+                  <div class="w-20 h-14 bg-surface-container rounded overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCcKh4ky0guu6NUWUEc8LfZLSBn6a97ht84o4WB6cn3ER7iUR8Urx5C9AZNc9yN2X5XhAtMEZC1nXL7A_nN0PUUDZ4gJsnQCi1ACPechQNxPSgr75OkA5m3BzZwO9tDhYyI7jgrhMu-fF2mrFOdTwn0J73ATuL-Yb1BhGuPNI53CuEzccZE2dQJwBHra3S6JFjowPtls3LQO8lTXBg-jvkF9UVDtbeemECmgC1G1fQAz79Z1A7kyumhQmoZl-Nv2Tt13wXavjuGZM" alt="Mercedes"/>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-center">
+                      <h3 class="font-headline text-xl text-on-surface">Mercedes S-Class</h3>
+                      <span class="text-primary font-bold text-sm">from $150/hr</span>
+                    </div>
+                    <p class="text-xs text-on-surface-variant mt-1">3 passengers · 2 bags · Luxury</p>
+                  </div>
+                  <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex-shrink-0"></div>
+                </div>
+              </label>
+            </div>
+            <div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+              <button onclick="goToStep(2)" class="text-on-surface-variant text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-on-surface transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">west</span> Back
+              </button>
+              <button onclick="goToStep(4)" class="gold-gradient text-on-primary px-8 py-3.5 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+                Review Booking <span class="material-symbols-outlined text-sm">east</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Confirm -->
+          <div id="booking-step-4" class="booking-step p-8 md:p-12 space-y-8">
+            <header class="space-y-3">
+              <h2 class="font-serif text-2xl md:text-3xl font-light tracking-tight text-on-surface italic">Confirm your reservation.</h2>
+              <p class="text-on-surface-variant font-light text-sm">Review the details below before finalizing.</p>
+            </header>
+            <!-- Summary -->
+            <div class="bg-surface-container-lowest p-7 rounded-sm space-y-5 border border-outline-variant/20">
+              <div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Service</span>
+                <span class="text-sm text-on-surface font-medium">Chauffeured Transfer</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Vehicle</span>
+                <span id="summary-vehicle" class="text-sm text-on-surface font-medium">Lincoln Town Car</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Pickup</span>
+                <span id="summary-pickup" class="text-sm text-on-surface font-medium text-right max-w-[60%]">—</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-outline-variant/20 pb-4">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Destination</span>
+                <span id="summary-dropoff" class="text-sm text-on-surface font-medium text-right max-w-[60%]">—</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold">Estimated Fare</span>
+                <span class="text-primary font-bold text-lg">from $85</span>
+              </div>
+            </div>
+            <!-- Contact -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-3">Full Name</label>
+                <input class="w-full bg-transparent border-b border-outline-variant focus:border-primary pb-2 text-on-surface font-light text-sm transition-all" type="text" placeholder="Your name"/>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-primary font-bold mb-3">Email Address</label>
+                <input class="w-full bg-transparent border-b border-outline-variant focus:border-primary pb-2 text-on-surface font-light text-sm transition-all" type="email" placeholder="your@email.com"/>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold mb-3">Phone Number</label>
+                <input class="w-full bg-transparent border-b border-outline-variant focus:border-primary pb-2 text-on-surface font-light text-sm transition-all" type="tel" placeholder="+1 (555) 000-0000"/>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-semibold mb-3">Payment</label>
+                <div class="flex items-center gap-3 border-b border-outline-variant pb-2">
+                  <span class="material-symbols-outlined text-on-surface-variant" style="font-size:18px;">credit_card</span>
+                  <span class="text-sm text-on-surface-variant font-light">Secure payment on confirmation</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+              <button onclick="goToStep(3)" class="text-on-surface-variant text-[11px] font-semibold tracking-[0.2em] uppercase hover:text-on-surface transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">west</span> Back
+              </button>
+              <button onclick="submitBooking()" class="gold-gradient text-on-primary px-10 py-4 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/10">
+                Confirm Reservation <span class="material-symbols-outlined text-sm">check</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 5: Success -->
+          <div id="booking-step-success" class="booking-step p-8 md:p-16 text-center space-y-6">
+            <div class="w-16 h-16 rounded-full gold-gradient flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(242,202,80,0.3)]">
+              <span class="material-symbols-outlined text-on-primary text-3xl">check</span>
+            </div>
+            <h2 class="font-serif text-3xl md:text-4xl font-light text-on-surface">Reservation Confirmed.</h2>
+            <p class="text-on-surface-variant max-w-md mx-auto leading-relaxed text-sm">
+              A confirmation has been sent to your email. Your chauffeur will be waiting. Welcome to the Obsidian experience.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <button onclick="showPage('home')" class="gold-gradient text-on-primary px-10 py-3.5 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase hover:opacity-90 active:scale-95 transition-all">
+                Return Home
+              </button>
+              <a href="tel:+18005550199" class="border border-primary/30 text-primary px-10 py-3.5 rounded-sm text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-primary/5 transition-colors">
+                Call Concierge
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-3 p-4">
+            <span class="material-symbols-outlined text-primary-fixed-dim" style="font-size:20px;">verified_user</span>
+            <div><p class="text-[10px] font-bold uppercase tracking-widest">Insured Travel</p><p class="text-xs text-on-surface-variant font-light">Full liability protection.</p></div>
+          </div>
+          <div class="flex items-center gap-3 p-4">
+            <span class="material-symbols-outlined text-primary-fixed-dim" style="font-size:20px;">schedule</span>
+            <div><p class="text-[10px] font-bold uppercase tracking-widest">15 Min Wait</p><p class="text-xs text-on-surface-variant font-light">Complimentary grace period.</p></div>
+          </div>
+          <div class="flex items-center gap-3 p-4">
+            <span class="material-symbols-outlined text-primary-fixed-dim" style="font-size:20px;">workspace_premium</span>
+            <div><p class="text-[10px] font-bold uppercase tracking-widest">Obsidian Fleet</p><p class="text-xs text-on-surface-variant font-light">Late-model luxury vehicles.</p></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="w-full border-t border-yellow-900/20 bg-neutral-950 mt-10">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 px-10 py-8">
+      <span class="font-serif text-lg text-yellow-500">USA Limos Service</span>
+      <p class="text-[10px] tracking-widest text-neutral-600 uppercase">© 2024 USA Limos Service · The Obsidian Standard of Travel</p>
+      <a href="tel:+18005550199" class="text-xs tracking-widest uppercase text-neutral-500 hover:text-yellow-400 transition-all">(800) 555-0199</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script>
+  // ── Page Navigation ──
+  const pages = ['home', 'fleet', 'services', 'about', 'book'];
+
+  function showPage(name) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.remove('active');
+    });
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateNavLinks(name);
+    // Reset booking to step 1 when opening book page
+    if (name === 'book') goToStep(1);
+  }
+
+  function updateNavLinks(active) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const page = link.getAttribute('data-page');
+      if (page === active) {
+        link.classList.add('text-yellow-400', 'border-b-2', 'border-yellow-500', 'pb-1');
+        link.classList.remove('text-neutral-300');
+      } else {
+        link.classList.remove('text-yellow-400', 'border-b-2', 'border-yellow-500', 'pb-1');
+        link.classList.add('text-neutral-300');
+      }
+    });
+  }
+
+  function toggleMobile() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  // ── Booking Steps ──
+  let currentStep = 1;
+
+  function goToStep(step) {
+    // Update step summary if going to step 4
+    if (step === 4) buildSummary();
+
+    // Hide all steps
+    document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('booking-step-success') && document.getElementById('booking-step-success').classList.remove('active');
+
+    // Show target step
+    const target = document.getElementById('booking-step-' + step);
+    if (target) {
+      target.classList.add('active');
+      currentStep = step;
+    }
+
+    // Update sidebar circles
+    for (let i = 1; i <= 4; i++) {
+      const circle = document.getElementById('step-circle-' + i);
+      if (!circle) continue;
+      if (i < step) {
+        // Completed
+        circle.className = 'w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-on-primary z-10';
+        circle.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+      } else if (i === step) {
+        // Active
+        circle.className = 'w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-on-primary z-10 shadow-[0_0_15px_rgba(242,202,80,0.3)]';
+        circle.innerHTML = '<span class="text-xs font-bold">0' + i + '</span>';
+      } else {
+        // Future
+        circle.className = 'w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/50 flex items-center justify-center text-on-surface-variant z-10';
+        circle.innerHTML = '<span class="text-xs font-bold">0' + i + '</span>';
+      }
+    }
+  }
+
+  function buildSummary() {
+    const pickup = document.getElementById('pickup')?.value || '—';
+    const dropoff = document.getElementById('dropoff')?.value || '—';
+    const selectedVehicle = document.querySelector('input[name="vehicle"]:checked');
+    const vehicleMap = { lincoln: 'Lincoln Town Car', escalade: 'Cadillac Escalade', mercedes: 'Mercedes S-Class' };
+    const vehicleName = selectedVehicle ? (vehicleMap[selectedVehicle.value] || selectedVehicle.value) : 'Lincoln Town Car';
+    document.getElementById('summary-pickup').textContent = pickup || '—';
+    document.getElementById('summary-dropoff').textContent = dropoff || '—';
+    document.getElementById('summary-vehicle').textContent = vehicleName;
+  }
+
+  function submitBooking() {
+    // Hide all steps
+    document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('booking-step-success').classList.add('active');
+    // Mark all circles complete
+    for (let i = 1; i <= 4; i++) {
+      const circle = document.getElementById('step-circle-' + i);
+      if (!circle) continue;
+      circle.className = 'w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-on-primary z-10';
+      circle.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Init
+  updateNavLinks('home');
+</script>
+</body>
+</html>
